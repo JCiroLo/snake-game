@@ -1,0 +1,29 @@
+.snake-game
+  .boardInfo
+    h1
+      | Sn
+      .snake
+        | aa
+        .head a
+      | ke Game
+
+    h3 Press space to start
+
+    .actions
+      button.btn(:class="{active: gameSettings.gameSpeed == 200}" @click="gameSettings.gameSpeed = 200") 
+        i.fas.fa-swords.fa-fw
+        | Noob
+      button.btn(:class="{active: gameSettings.gameSpeed == 100}" @click="gameSettings.gameSpeed = 100") 
+        i.fas.fa-swords.fa-fw
+        | Normal
+      button.btn(:class="{active: gameSettings.gameSpeed == 50}" @click="gameSettings.gameSpeed = 50") 
+        i.fas.fa-swords.fa-fw
+        | Hardcore
+      br
+      button.btn(:class="{active: drugs}" @click="drugs = !drugs")
+        i.fas.fa-swords.fa-fw
+        | Drugs
+
+  .board
+    p(:class="{show: gameStatus}") Puntaje: {{score - 4}}
+    .grid(:class="{drugs}" ref="boardGrid" :style="{gridTemplateColumns: `repeat(${gameSettings.boardSize}, 1fr)`}")
